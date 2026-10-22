@@ -7,7 +7,7 @@ A modern personal portfolio for **Robiul Islam (RobiCodes)**, built with Next.js
 - React + TypeScript
 - Responsive custom CSS
 - SEO and Open Graph metadata
-- No PHP runtime or database required for the current portfolio presentation
+- No PHP runtime, Composer, or database required for the current portfolio presentation
 
 ## Local development
 Requires Node.js 20.9+.
@@ -30,6 +30,6 @@ npm start
 Import `senseiCodeHub/portfolio` into Vercel and keep the root directory set to the repository root. Vercel should detect Next.js automatically. Configure `main` as the production branch after reviewing and merging the migration pull request.
 
 ## Migration scope
-The Next.js version introduces a responsive portfolio for Robiul Islam / RobiCodes under the **SenseiCodeHub** identity, with About, selected projects, technology stack, and contact sections. Project cards link to relevant live pages or GitHub repositories.
+The portfolio frontend is now Next.js-only. Legacy PHP pages, PHP layout includes, and the Composer configuration have been removed from the migration branch. The site includes About, selected projects, technology stack, and contact sections under the **SenseiCodeHub** identity. Project cards link to relevant live pages or GitHub repositories.
 
-The former PHP site's database-driven project manager, admin area, and server-side contact form are not included in this first frontend migration. These need a deliberate data/API and storage migration before feature parity can be claimed. Contact currently uses an email link, so no database credentials or email secrets are exposed in the frontend.
+The former PHP site's database-driven project manager, admin area, and server-side contact form are not included in this frontend migration. Contact currently uses an email link, so no database credentials or email secrets are exposed in the frontend.

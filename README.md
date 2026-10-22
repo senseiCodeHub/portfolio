@@ -34,4 +34,4 @@ npm start
 ## Deploy to Vercel
 Import `senseiCodeHub/portfolio` into Vercel and keep the root directory set to the repository root. Vercel should detect Next.js automatically. Set `main` as the production branch.
 
-The site is a Next.js application and does not require a separate PHP runtime or database. The public portfolio has no admin panel or server-side email system.
+The site is a standalone Next.js application and does not require a separate backend runtime or database. The public portfolio has no admin panel or server-side email system.

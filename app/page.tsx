@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+
 interface GitHubUser {
   login: string;
   name: string | null;
@@ -99,6 +100,19 @@ const featured = [
   },
 ];
 
+const codeBlock = `
+<span style="color:#a99aff">const</span> developer = { {
+&nbsp;&nbsp;name: <span style="color:#c4f36b">'Robiul Islam'</span>,
+&nbsp;&nbsp;alias: <span style="color:#c4f36b">'RobiCodes'</span>,
+&nbsp;&nbsp;focus: [ {
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'Web'</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'APIs'</span>,
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'Mobile'</span>
+&nbsp;&nbsp; } ],
+&nbsp;&nbsp;mindset: <span style="color:#c4f36b">'Build. Learn. Improve.'</span>
+} };
+`.trim();
+
 function Reveal({ children, className = '', id, delay = 0 }: { children: ReactNode; className?: string; id?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -123,19 +137,6 @@ function Reveal({ children, className = '', id, delay = 0 }: { children: ReactNo
   );
 }
 
-const codeBlock = `
-<span style="color:#a99aff">const</span> developer = { {
-&nbsp;&nbsp;name: <span style="color:#c4f36b">'Robiul Islam'</span>,
-&nbsp;&nbsp;alias: <span style="color:#c4f36b">'RobiCodes'</span>,
-&nbsp;&nbsp;focus: [ {
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'Web'</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'APIs'</span>,
-&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#c4f36b">'Mobile'</span>
-&nbsp;&nbsp; } ],
-&nbsp;&nbsp;mindset: <span style="color:#c4f36b">'Build. Learn. Improve.'</span>
-} };
-`.trim();
-
 export default function Home() {
   const [user, setUser] = useState<GitHubUser | null>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
@@ -158,92 +159,75 @@ export default function Home() {
 
   return (
     <main className="page">
-      <header className="site-header">
-        <a className="brand" href="/" aria-label="SenseiCodeHub home">
-          <span className="brand-mark">S<span>.</span></span>
-          <span>SenseiCodeHub</span>
-        </a>
-        <nav aria-label="Main navigation" className="hidden-mobile">
-          <a href="#about">About</a>
-          <a href="#github">GitHub</a>
-          <a href="#projects">Projects</a>
-          <a href="#stack">Stack</a>
-          <a className="nav-contact" href="#contact">
-            Let’s talk <span>↗</span>
-          </a>
-        </nav>
-        <div className="nav-mobile" aria-label="Mobile actions">
-          <a href="#github" className="icon-btn" aria-label="GitHub">⌂</a>
-          <a href="#contact" className="icon-btn" aria-label="Contact">✉</a>
-        </div>
-      </header>
-
       <section id="hero" className="hero">
-        <div className="hero-bg">
-          <div className="blob blob-1" />
-          <div className="blob blob-2" />
-          <div className="blob blob-3" />
+        <div className="hero-ground">
+          <div className="glow glow-1" />
+          <div className="glow glow-2" />
+          <div className="glow glow-3" />
         </div>
         <div className="wrap">
           <div className="hero-grid">
             <Reveal className="hero-copy" delay={0}>
-              <div className="eyebrow">
-                <span className="status-dot" aria-hidden="true" />
-                OPEN TO COLLABORATION
-                <span className="eyebrow-line" aria-hidden="true" />
-              </div>
-              <p className="intro">Hey there, I’m</p>
-              <h1>
-                Robiul Islam<span className="accent">.</span>
-              </h1>
-              <h2>
-                I build <span className="text-gradient">digital experiences</span><br />
-                that solve real problems.
-              </h2>
+              <p className="intro">Robiul Islam</p>
+              <h1>I build digital experiences<br /><span className="emphasis">that solve real problems.</span></h1>
               <p className="hero-desc">
-                Web &amp; API developer from Bangladesh, known as{' '}
-                <strong>RobiCodes</strong>. I turn ideas into useful products — from web platforms
-                and backend systems to mobile apps.
+                Web &amp; API developer from Bangladesh, known as <strong>RobiCodes</strong>. I turn ideas
+                into useful products — from web platforms and backend systems to mobile apps.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#projects">
-                  Explore my work <span>↘</span>
+                <a className="button button-primary" href="#github">
+                  GitHub <span>→</span>
                 </a>
-                <a className="button button-ghost" href="https://github.com/senseiCodeHub">
-                  GitHub <span>↗</span>
+                <a className="button button-ghost" href="#projects">
+                  Work <span>→</span>
                 </a>
               </div>
               <div className="social-row">
                 <a href="https://github.com/senseiCodeHub" target="_blank" rel="noreferrer">
-                  GitHub ↗
+                  github.com/senseiCodeHub
                 </a>
                 <a href="https://www.facebook.com/iam.robi69/" target="_blank" rel="noreferrer">
-                  Facebook ↗
+                  facebook.com/iam.robi69
                 </a>
               </div>
             </Reveal>
 
-            <Reveal className="hero-art-wrap" delay={0.2}>
-              <div className="hero-art" aria-label="Developer identity graphic">
-                <div className="orbit orbit-one" />
-                <div className="orbit orbit-two" />
-                <div className="orbit orbit-three" />
-                <div className="art-grid" />
-                <div className="code-card">
-                  <div className="code-top">
-                    <span aria-hidden="true" />
-                    <span aria-hidden="true" />
-                    <span aria-hidden="true" />
-                    <small>robiul.ts</small>
-                  </div>
-                  <pre dangerouslySetInnerHTML={{ __html: codeBlock }} />
-                  <div className="code-bottom">
-                    <span className="status-dot" aria-hidden="true" />
-                    Available for interesting projects
+            <Reveal className="hero-proof" delay={0.3}>
+              <div className="proof-card">
+                <div className="proof-head">
+                  <img
+                    src={user?.avatar_url || 'https://avatars.githubusercontent.com/u/1'}
+                    alt={user?.login || 'avatar'}
+                    className="avatar"
+                  />
+                  <div className="proof-meta">
+                    <h3>{user?.name || 'Robiul Islam'}</h3>
+                    <p className="handle">@{user?.login || GITHUB_USER} · {user?.location || 'Bangladesh'}</p>
                   </div>
                 </div>
-                <div className="float-chip chip-top">&lt;/&gt; <span>Clean code</span></div>
-                <div className="float-chip chip-bottom"><span className="status-dot" aria-hidden="true" /><span>Open source</span></div>
+                <div className="proof-body">
+                  <div className="proof-bio">
+                    {user?.bio || 'Building useful things for the web, APIs, and mobile.'}
+                  </div>
+                  <div className="proof-stats">
+                    <div className="stat">
+                      <span className="stat-value">{user?.public_repos ?? 0}</span>
+                      <span className="stat-label">repos</span>
+                    </div>
+                    <div className="stat">
+                      <span className="stat-value">{user?.followers ?? 0}</span>
+                      <span className="stat-label">followers</span>
+                    </div>
+                    <div className="stat">
+                      <span className="stat-value">{user?.following ?? 0}</span>
+                      <span className="stat-label">following</span>
+                    </div>
+                  </div>
+                </div>
+                <pre className="code-box" dangerouslySetInnerHTML={{ __html: codeBlock }} />
+                <a href="https://github.com/senseiCodeHub" target="_blank" rel="noreferrer" className="proof-cta">
+                  Open profile <span>→</span>
+                </a>
               </div>
             </Reveal>
           </div>
@@ -251,52 +235,35 @@ export default function Home() {
       </section>
 
       <Reveal className="section about" id="about" delay={0.1}>
-        <div className="wrap">
-          <div className="section-head">
-            <h2 className="section-title">About me</h2>
-            <p className="section-desc">Software engineer building useful, performant digital products.</p>
-          </div>
+        <div className="wrap narrow">
+          <h2 className="section-title">About</h2>
           <div className="about-grid">
             <div className="about-copy">
               <p>
-                I’m Robiul Islam, a web &amp; API developer from Bangladesh. I enjoy building products
-                that are useful, performant, and pleasant to use. Currently focused on web platforms,
-                APIs, and mobile experiences.
+                I’m Robiul Islam, a web &amp; API developer from Bangladesh. I enjoy building products that are
+                useful, performant, and pleasant to use. Currently focused on web platforms, APIs, and mobile
+                experiences.
               </p>
               <p>
                 Open to collaboration on interesting projects. Reach me on GitHub or Facebook.
               </p>
-              <div className="about-stats">
-                <div className="stat">
-                  <span className="stat-value">{user?.public_repos ?? 0}</span>
-                  <span className="stat-label">Public repos</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-value">{user?.followers ?? 0}</span>
-                  <span className="stat-label">Followers</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-value">{user?.following ?? 0}</span>
-                  <span className="stat-label">Following</span>
-                </div>
-              </div>
             </div>
-            <div className="about-preview">
-              <div className="preview-card">
-                <img
-                  src={user?.avatar_url || 'https://avatars.githubusercontent.com/u/1'}
-                  alt={user?.login || 'avatar'}
-                  className="avatar-lg"
-                />
-                <div className="preview-info">
-                  <h3>{user?.name || 'Robiul Islam'}</h3>
-                  <p>{user?.bio || 'Web & API Developer · Bangladesh'}</p>
-                  <div className="preview-meta">
-                    <span>{user?.location || 'Bangladesh'}</span>
-                    <span>·</span>
-                    <span>{new Date().getFullYear()}</span>
-                  </div>
-                </div>
+            <div className="about-list">
+              <div className="list-item">
+                <span className="list-label">Role</span>
+                <span className="list-value">Web &amp; API Developer</span>
+              </div>
+              <div className="list-item">
+                <span className="list-label">Location</span>
+                <span className="list-value">{user?.location || 'Bangladesh'}</span>
+              </div>
+              <div className="list-item">
+                <span className="list-label">Public repos</span>
+                <span className="list-value">{user?.public_repos ?? 0}</span>
+              </div>
+              <div className="list-item">
+                <span className="list-label">Followers</span>
+                <span className="list-value">{user?.followers ?? 0}</span>
               </div>
             </div>
           </div>
@@ -315,19 +282,19 @@ export default function Home() {
           </div>
 
           <div className="github-stats">
-            <div className="stat-card shine">
+            <div className="stat-card">
               <div className="stat-value">{user?.public_repos ?? '--'}</div>
               <div className="stat-label">Public repos</div>
             </div>
-            <div className="stat-card shine">
+            <div className="stat-card">
               <div className="stat-value">{user?.followers ?? '--'}</div>
               <div className="stat-label">Followers</div>
             </div>
-            <div className="stat-card shine">
+            <div className="stat-card">
               <div className="stat-value">{user?.following ?? '--'}</div>
               <div className="stat-label">Following</div>
             </div>
-            <div className="stat-card shine">
+            <div className="stat-card">
               <div className="stat-value">{user?.location || 'Bangladesh'}</div>
               <div className="stat-label">Location</div>
             </div>
@@ -335,7 +302,7 @@ export default function Home() {
 
           {loading ? (
             <div className="repos-skeleton">
-              {[0, 1, 2, 3].map((i) => (
+              {[0, 1, 2].map((i) => (
                 <div key={i} className="repo-skeleton" />
               ))}
             </div>
@@ -347,7 +314,7 @@ export default function Home() {
                     <div className="repo-top">
                       <h3 className="repo-title">{repo.name}</h3>
                       <a href={repo.html_url} target="_blank" rel="noreferrer" className="repo-external">
-                        ↗
+                        →
                       </a>
                     </div>
                     {repo.description && <p className="repo-desc">{repo.description}</p>}
@@ -363,7 +330,7 @@ export default function Home() {
                       )}
                     </div>
                     <a href={repo.html_url} target="_blank" rel="noreferrer" className="repo-cta">
-                      View on GitHub <span>→</span>
+                      View repository <span>→</span>
                     </a>
                   </article>
                 ))
@@ -378,16 +345,15 @@ export default function Home() {
       <Reveal className="section projects" id="projects" delay={0.1}>
         <div className="wrap">
           <div className="section-head">
-            <h2 className="section-title">Featured projects</h2>
-            <p className="section-desc">Selected work.</p>
+            <h2 className="section-title">Featured work</h2>
+            <p className="section-desc">Selected projects.</p>
           </div>
           <div className="project-grid">
             {featured.map((p) => (
               <article key={p.title} className="project-card">
-                <div className="project-badge">{p.n}</div>
                 <div className="project-meta">
                   <span className="project-type">{p.type}</span>
-                  <a href={p.href} target="_blank" rel="noreferrer" className="project-link">{p.label} <span>↗</span></a>
+                  <a href={p.href} target="_blank" rel="noreferrer" className="project-link">{p.label} <span>→</span></a>
                 </div>
                 <h3 className="project-title">{p.title}</h3>
                 <p className="project-desc">{p.desc}</p>
@@ -403,8 +369,8 @@ export default function Home() {
       </Reveal>
 
       <Reveal className="section stack" id="stack" delay={0.1}>
-        <div className="wrap">
-          <h2 className="section-title">Tech stack</h2>
+        <div className="wrap narrow">
+          <h2 className="section-title">Stack</h2>
           <div className="stack-pills">
             {stack.map((item, i) => (
               <span key={item} className="stack-pill" style={{ transitionDelay: `${i * 0.05}s` }}>
@@ -416,34 +382,21 @@ export default function Home() {
       </Reveal>
 
       <Reveal className="section contact" id="contact" delay={0.1}>
-        <div className="wrap">
+        <div className="wrap narrow">
           <div className="contact-card">
             <h2 className="section-title">Let’s talk</h2>
             <p>Have a project in mind or want to collaborate?</p>
             <div className="contact-links">
               <a href="https://github.com/senseiCodeHub" target="_blank" rel="noreferrer" className="button button-primary">
-                GitHub <span>↗</span>
+                GitHub <span>→</span>
               </a>
               <a href="https://www.facebook.com/iam.robi69/" target="_blank" rel="noreferrer" className="button button-ghost">
-                Facebook <span>↗</span>
+                Facebook <span>→</span>
               </a>
             </div>
           </div>
         </div>
       </Reveal>
-
-      <footer className="site-footer">
-        <a className="brand" href="/" aria-label="SenseiCodeHub home">
-          <span className="brand-mark">S<span>.</span></span>
-          <span>SenseiCodeHub</span>
-        </a>
-        <p>Designed &amp; built by Robiul Islam · Bangladesh</p>
-        <div className="footer-links">
-          <a href="https://github.com/senseiCodeHub" target="_blank" rel="noreferrer">GitHub ↗</a>
-          <a href="https://www.facebook.com/iam.robi69/" target="_blank" rel="noreferrer">Facebook ↗</a>
-        </div>
-        <small>© {new Date().getFullYear()} Robiul Islam. All rights reserved.</small>
-      </footer>
     </main>
   );
 }
